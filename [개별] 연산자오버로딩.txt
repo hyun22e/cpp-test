@@ -1,0 +1,125 @@
+/*1. 사각형의 가로 및 세로를 입력 받고 면적을 계산하는 
+프로그램을 C++의 클래스 기반으로 작성하시오. */
+#include<iostream>
+using namespace std;
+class CMath{
+public:
+CMath(){};
+int Area(){ // 밑에서 w,h 정수를 받기위해 안에 넣지 않는다
+int w, h;  //두 수를 입력받기 위해 w ,h 를 Area 함수안에 선언해준다.
+cin >> w >> h; 
+return w*h; 
+}
+}; 
+int main(){
+CMath me;
+cout << me.Area() << endl;
+}
+/*2. Add(2,3) 및 Add(2.2, 3.3);이 실행 되도록 함수를 오버로딩 하시오.*/
+#include<iostream>
+using namespace std;
+int Add(int a, int b){
+return a+b;
+} 
+double Add(double a, double b){
+return a+b;
+}
+int main(){
+cout << Add(2,3) << endl;
+cout << Add(2.2, 3.3) << endl;
+}
+//template 사용할시
+/*2. Add(2,3) 및 Add(2.2, 3.3);이 실행 되도록 함수를 오버로딩 하시오.*/
+#include<iostream>
+using namespace std;
+template <class T>
+T Add(T a, T b){
+return a+b;
+} 
+int main(){
+cout << Add(2,3) << endl;
+cout << Add(2.2, 3.3) << endl;
+}
+3. 한 지점을 나타내는 (x, y)를 나타내는 클래스 CPnt를 만드시오.
+1) CPnt p1(2,3), p; 생성자를 오버로딩하시오.
+//1) CPnt p1(2,3), p; 생성자를 오버로딩하시오
+ 
+#include<iostream>
+ 
+using namespace std;
+ 
+class CPnt{
+public:
+int x, y;
+CPnt(){};
+CPnt(int a, int b) : x(a), y(b){}
+};
+int main(){
+CPnt p1(2,3);
+CPnt p;
+cout << p1.x << "," << p1.y <<endl;
+cout << p.x << ","<< p.y <<endl;
+}
+2) CPnt P1(2,3); p.Pr()이 2, 3을 출력하도록 하시오. 
+#include<iostream>
+ 
+using namespace std;
+ 
+class CPnt{
+int x, y;
+public:
+CPnt(int a, int b):x(a), y(b){}
+void pr(){
+cout << "(" << x << "," << y << ")" << endl;
+}
+};
+int main(){
+CPnt p1(2,3);
+p1.pr();
+}
+3) CPnt P1(2,3), p2(3,4), p; 에서 p=p1.Add(p2);
+#include<iostream>
+ 
+using namespace std;
+ 
+class CPnt{
+int x, y;
+public:
+CPnt(){};
+CPnt(int a, int b):x(a), y(b){}
+CPnt Add(CPnt me){
+return CPnt(x+me.x, y+me.y);
+}
+void pr(){
+cout << "(" << x << "," << y << ")" << endl;
+}
+};
+int main(){
+CPnt p1(2,3), p2(3,4), p;
+p = p1.Add(p2);
+p.pr();
+}
+4)  CPnt P1(2,3), p2(3,4), p;에서 p = p1+p2; 
+가 실행 되도록 연산자 오버로딩을 하시오.
+#include<iostream>
+using namespace std;
+class CPnt{
+int x, y;
+public:
+CPnt(){};
+CPnt(int a, int b):x(a), y(b){}
+CPnt operator+(CPnt me){
+return CPnt(x+me.x, y+me.y);
+}
+void pr(){
+cout << "(" << x << "," << y << ")" << endl;
+}
+};
+int main(){
+CPnt p1(2,3), p2(3,4), p;
+p = p1 + p2;
+p.pr();
+}
+이번 과제를 하면서 공부가 많이 됬습니다. 교수님
+그런데 3-1 번 문제가 제가 잘 이해를 못하는 것 같습니다
+제가 적은 방법이 맞는지 확인해주세요!!ㅠ
